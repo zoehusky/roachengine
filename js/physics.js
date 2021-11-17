@@ -160,6 +160,8 @@ var phys={
 
 
   applyGravity:function(characterMesh){
+    // currently just constant downward velocity...
+    // todo - add acceleration
     characterMesh.position.y-=worldGravityFactor;
   },
 
