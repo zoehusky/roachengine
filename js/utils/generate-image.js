@@ -227,8 +227,8 @@ var generateImage={
     else if (font.family==="timessansbold"      ){filepath="js/rsc/fonts/jsonURI/timessansbold.js";       }
     else if (font.family==="timessansbolditalic"){filepath="js/rsc/fonts/jsonURI/timessansbolditalic.js"; }
     else if (font.family==="timessansitalic"    ){filepath="js/rsc/fonts/jsonURI/timessansitalic.js";     }
-    else if (font.family==="wingdings"          ){filepath="js/rsc/fonts/jsonURI/wingdings.js";            }
-    else                                         {filepath="js/rsc/fonts/jsonURI/wingdings.js";            }
+    else if (font.family==="wingdings"          ){filepath="js/rsc/fonts/jsonURI/wingdings.js";           }
+    else                                         {filepath="js/rsc/fonts/jsonURI/wingdings.js";           }
 
     // define font material based on font.color
     let fontMaterial=newThreeBasicMaterial(font.color);
