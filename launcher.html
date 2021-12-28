@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html id="page">
+  <br><a href="#" id="a0">Click to run game.</a>
+  <br><a href="#" id="a1">Click to run bios.</a>
+  <script src="js/utils.js"></script>
+  <script>
+    a0.onclick=()=>{
+      let newWindow=window.open("game.html","","width=1,height=1,screenX=1,screenY=1,");
+      newWindow.resizeTo(640,480);
+      newWindow.moveTo(
+        screen.width/2  - newWindow.outerWidth/2,
+        screen.height/2 - newWindow.outerHeight/2
+      );
+      return false;
+    };
+    a1.onclick=()=>{
+      let newWindow=window.open("bios.html","","width=1,height=1,screenX=1,screenY=1,");
+      newWindow.resizeTo(640,480);
+      newWindow.moveTo(
+        screen.width/2  - newWindow.outerWidth/2,
+        screen.height/2 - newWindow.outerHeight/2
+      );
+      return false;
+    };
+  </script>
+  <script>
+    window.addEventListener("DOMContentLoaded",()=>{// include this at the end of each html file
+      (function(){// remove the annoying automatic body and head created by browser (this must go last)
+        let headContents    = document.querySelectorAll("head>*:not(link[rel='icon'])");
+        let bodyContents    = document.querySelectorAll("body>*");
+        document.head.remove();
+        document.body.remove();
+        headContents.forEach((each)=>{  page.appendChild(each); });
+        bodyContents.forEach((each)=>{  page.appendChild(each); });
+      })();
+      (function(){// send html to parent window for compiling
+        // broadcast self to parent window via message
+        (window.opener||window.parent).postMessage("<!DOCTYPE html>\n<!-- "+window.location.pathname+" -->\n"+page.outerHTML,"*");
+      })();
+      (function(){//add icon (for some reason it must be contained within a "head")
+        if(document.querySelector("head")===null){
+          let h=document.createElement("head");
+          let icon=document.createElement("link");
+          icon.rel="icon";
+          icon.type="image/x-icon";
+          icon.href="data:image/x-icon;base64,AAABAAEAAQEAAAEAIAAwAAAAFgAAACgAAAABAAAAAgAAAAEAIAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAA==";
+          page.appendChild(h);
+          h.appendChild(icon);
+        }
+      })();
+    });
+    </script>
+</html>
